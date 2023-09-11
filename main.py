@@ -23,6 +23,8 @@ sv = Service('AI锐评', enable_on_default=True, visible=True)
 async def ai_comment(bot:HoshinoBot, ev:CQEvent):
     text :str = ev.message.extract_plain_text()
     things = text.split()
+    if len(things) < 2:
+        await bot.finish(ev, "请提供两个要对比的事物，例如：对比 桥本环奈 内田真礼")
 
     await bot.send(ev, "请稍等，AI 正在帮你评价...")
     try:
